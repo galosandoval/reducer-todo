@@ -1,24 +1,14 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useReducer, useState } from "react";
 import "./App.css";
+import TodoList from "./components/TodoList";
+import { reducer, initialValues } from "./reducers/reducer";
 
 function App() {
+  const [state, dispatch] = useReducer(reducer, initialValues);
+  const [task, setTask] = useState();
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <TodoList state={state} dispatch={dispatch} />
     </div>
   );
 }
