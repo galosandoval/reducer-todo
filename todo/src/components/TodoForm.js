@@ -13,7 +13,7 @@ const TodoForm = ({ state, dispatch }) => {
 
   const submitTask = (e) => {
     dispatch({ type: "ADD_ITEM", payload: task });
-    setTask('')
+    setTask("");
   };
 
   const clearTask = (e) => {
@@ -22,13 +22,10 @@ const TodoForm = ({ state, dispatch }) => {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="newTask"
-        value={task}
-        onChange={handleChanges}
-      />
-      <button type='submit' onClick={submitTask}>Add Task</button>
+      <input type="text" name="newTask" value={task} onChange={handleChanges} />
+      <button type="submit" onClick={submitTask}>
+        Add Task
+      </button>
       <button onClick={clearTask}>Complete</button>
     </form>
   );
