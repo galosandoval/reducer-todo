@@ -5,7 +5,7 @@ import { reducer, initialValues } from "./reducers/reducer";
 
 function App() {
   const [state, dispatch] = useReducer(reducer, initialValues);
-  const [task, setTask] = useState();
+  // const [task, setTask] = useState();
 
   console.log(state)
   return (

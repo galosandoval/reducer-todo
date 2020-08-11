@@ -1,12 +1,12 @@
-export const initialValues = [
-  (todos: [
+export const initialValues = {
+  todos: [
     {
       item: "Learn about reducers",
       completed: false,
       id: 3892987589,
-    }
-  ]),
-];
+    },
+  ],
+};
 
 export const reducer = (state, action) => {
   switch (action.type) {
@@ -35,10 +35,10 @@ export const reducer = (state, action) => {
         }),
       };
     case "CLEAR_ITEM":
-      return state.filter((item) => {
-        // eslint-disable-next-line no-unused-expressions
-        item.completed === false;
-      });
+      return {
+        ...state,
+        todos: state.filter((item) => !item.completed),
+      };
     default:
       return state;
   }

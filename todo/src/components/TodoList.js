@@ -1,30 +1,32 @@
 import React from "react";
-import Todo from "./Todo";
 
-function TodoList(props) {
-  const { state, dispatch } = props;
-  console.log(state)
-
-  const clickHandler = (id) => {
-    dispatch({ type: "TOGGLE_ITEM", payload: id });
-  };
-
-  const clearItems = (e) => {
-    e.preventDefault();
-    dispatch({ type: "CLEAR_ITEM" });
-  };
-
+const TodoList = ({ state, dispatch }) => {
+  // const TodoList = ({ state, dispatch}) => { <<< this also works to pass in props
+  // const {state, dispatch} = props
   console.log(state);
+
+  // const clickHandler = (id) => {
+  //   dispatch({ type: "TOGGLE_ITEM", payload: id });
+  // };
+
+  // const clearItems = (e) => {
+  //   e.preventDefault();
+  //   dispatch({ type: "CLEAR_ITEM" });
+  // };
+
   return (
     <div>
-      {state.map((item) => {
-        // eslint-disable-next-line no-unused-expressions
-        <Todo key={item.id} clickHandler={clickHandler} item={item} />;
-      })}
-      <Todo />
-      <button onClick={clearItems}></button>
+      {state.todos.map((task) => (
+        <div
+          key={task.id}
+          className={`task${task.completed ? " completed" : ""} `}
+          onClick={() => dispatch({ type: "TOGGLE_ITEM", payload: task.id })}
+        >
+          <p>{task.item}</p>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
 export default TodoList;
