@@ -9,17 +9,17 @@ export const initialValues = [
 export const reducer = (state, action) => {
   switch (action.type) {
     case "ADD_ITEM":
-      console.log(state)
+      console.log(state);
       return [
         ...state,
         {
-          item: action.payload,
+          item: action.payload.id,
           completed: false,
           id: new Date.now(),
         },
       ];
     case "TOGGLE_ITEM":
-      return state.map((task) => {
+      return state.map((task, id) => {
         if (task.id === id) {
           return {
             ...task,
@@ -31,6 +31,7 @@ export const reducer = (state, action) => {
       });
     case "CLEAR_ITEM":
       return state.filter((item) => {
+        // eslint-disable-next-line no-unused-expressions
         item.completed === false;
       });
     default:
