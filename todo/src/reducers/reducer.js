@@ -23,7 +23,7 @@ export const reducer = (state, action) => {
     case "TOGGLE_ITEM":
       return {
         ...state,
-        todos: state.todos.map((task, id) => {
+        todos: state.todos.map((task) => {
           if (task.id === action.payload) {
             return {
               ...task,
